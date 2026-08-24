@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "lastSync": "2026-08-20T17:34:14.132Z",
+  "problems": {
+    "leetcode:binary-tree-preorder-traversal": {
+      "platform": "leetcode",
+      "slug": "binary-tree-preorder-traversal",
+      "title": "Binary Tree Preorder Traversal",
+      "difficulty": "Easy",
+      "syncedAt": "2026-08-20T17:28:06.478Z",
+      "commitSha": "9d1fe15700ca44495a2622c40d8d641fca7d05a6",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/9d1fe15700ca44495a2622c40d8d641fca7d05a6",
+      "filePath": "leetcode/easy/binary-tree-preorder-traversal.py"
+    },
+    "leetcode:k-diff-pairs-in-an-array": {
+      "platform": "leetcode",
+      "slug": "k-diff-pairs-in-an-array",
+      "title": "K-diff Pairs in an Array",
+      "difficulty": "Medium",
+      "syncedAt": "2026-08-20T17:28:07.887Z",
+      "commitSha": "567f1b40679db15f7b69b4ac0a0a47563a616441",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/567f1b40679db15f7b69b4ac0a0a47563a616441",
+      "filePath": "leetcode/medium/k-diff-pairs-in-an-array.py"
+    },
+    "leetcode:find-peak-element": {
+      "platform": "leetcode",
+      "slug": "find-peak-element",
+      "title": "Find Peak Element",
+      "difficulty": "Medium",
+      "syncedAt": "2026-08-20T17:28:09.328Z",
+      "commitSha": "ea298779c6af5337972b1cf65f3e1ef13d6cbe74",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/ea298779c6af5337972b1cf65f3e1ef13d6cbe74",
+      "filePath": "leetcode/medium/find-peak-element.py"
+    },
+    "leetcode:count-primes": {
+      "platform": "leetcode",
+      "slug": "count-primes",
+      "title": "Count Primes",
+      "difficulty": "Medium",
+      "syncedAt": "2026-08-20T17:28:10.592Z",
+      "commitSha": "a7f4d2e21ab0fe413364d996beb2e194905cfd35",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/a7f4d2e21ab0fe413364d996beb2e194905cfd35",
+      "filePath": "leetcode/medium/count-primes.py"
+    },
+    "leetcode:running-sum-of-1d-array": {
+      "platform": "leetcode",
+      "slug": "running-sum-of-1d-array",
+      "title": "Running Sum of 1d Array",
+      "difficulty": "Easy",
+      "syncedAt": "2026-08-20T17:28:12.059Z",
+      "commitSha": "1db18d4a742c5958787467c46dbbb19a3152862a",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/1db18d4a742c5958787467c46dbbb19a3152862a",
+      "filePath": "leetcode/easy/running-sum-of-1d-array.py"
+    },
+    "leetcode:majority-element": {
+      "platform": "leetcode",
+      "slug": "majority-element",
+      "title": "Majority Element",
+      "difficulty": "Easy",
+      "syncedAt": "2026-08-20T17:28:13.374Z",
+      "commitSha": "d3acf8101bc2fc82a4bd1ad7ec14a9e2d11aac91",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/d3acf8101bc2fc82a4bd1ad7ec14a9e2d11aac91",
+      "filePath": "leetcode/easy/majority-element.py"
+    },
+    "leetcode:contains-duplicate": {
+      "platform": "leetcode",
+      "slug": "contains-duplicate",
+      "title": "Contains Duplicate",
+      "difficulty": "Easy",
+      "syncedAt": "2026-08-20T17:28:14.944Z",
+      "commitSha": "5ed6b7a4fe0afd6aeb64ec63fc4ad656a16fe6e4",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/5ed6b7a4fe0afd6aeb64ec63fc4ad656a16fe6e4",
+      "filePath": "leetcode/easy/contains-duplicate.py"
+    },
+    "leetcode:search-insert-position": {
+      "platform": "leetcode",
+      "slug": "search-insert-position",
+      "title": "Search Insert Position",
+      "difficulty": "Easy",
+      "syncedAt": "2026-08-20T17:28:16.305Z",
+      "commitSha": "326271eff5ff2d2e3427bbebb1f9564542c33eba",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/326271eff5ff2d2e3427bbebb1f9564542c33eba",
+      "filePath": "leetcode/easy/search-insert-position.py"
+    },
+    "leetcode:find-n-unique-integers-sum-up-to-zero": {
+      "platform": "leetcode",
+      "slug": "find-n-unique-integers-sum-up-to-zero",
+      "title": "Find N Unique Integers Sum up to Zero",
+      "difficulty": "Easy",
+      "syncedAt": "2026-08-20T17:28:17.635Z",
+      "commitSha": "b7932231dd7ec0f43d6d965ba9627d16f1f31b03",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/b7932231dd7ec0f43d6d965ba9627d16f1f31b03",
+      "filePath": "leetcode/easy/find-n-unique-integers-sum-up-to-zero.py"
+    },
+    "leetcode:maximum-subarray": {
+      "platform": "leetcode",
+      "slug": "maximum-subarray",
+      "title": "Maximum Subarray",
+      "difficulty": "Medium",
+      "syncedAt": "2026-08-20T17:28:19.281Z",
+      "commitSha": "8744fe60b3fd3711050d35cf640d1f2bc3bdfa34",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/8744fe60b3fd3711050d35cf640d1f2bc3bdfa34",
+      "filePath": "leetcode/medium/maximum-subarray.py"
+    },
+    "leetcode:sum-of-subarray-ranges": {
+      "platform": "leetcode",
+      "slug": "sum-of-subarray-ranges",
+      "title": "Sum of Subarray Ranges",
+      "difficulty": "Medium",
+      "syncedAt": "2026-08-20T17:28:20.710Z",
+      "commitSha": "b9c564ab04bd56ebfdcfd0d6a610229503d00947",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/b9c564ab04bd56ebfdcfd0d6a610229503d00947",
+      "filePath": "leetcode/medium/sum-of-subarray-ranges.py"
+    },
+    "leetcode:remove-duplicates-from-sorted-array": {
+      "platform": "leetcode",
+      "slug": "remove-duplicates-from-sorted-array",
+      "title": "Remove Duplicates from Sorted Array",
+      "difficulty": "Easy",
+      "syncedAt": "2026-08-20T17:28:21.978Z",
+      "commitSha": "febee8923c825d12f3692d8472ccee0570176a5f",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/febee8923c825d12f3692d8472ccee0570176a5f",
+      "filePath": "leetcode/easy/remove-duplicates-from-sorted-array.py"
+    },
+    "leetcode:count-special-triplets": {
+      "platform": "leetcode",
+      "slug": "count-special-triplets",
+      "title": "Count Special Triplets",
+      "difficulty": "Medium",
+      "syncedAt": "2026-08-20T17:28:23.344Z",
+      "commitSha": "ece64aa87107b9c685b694b4e6d28d9ed60d8c12",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/ece64aa87107b9c685b694b4e6d28d9ed60d8c12",
+      "filePath": "leetcode/medium/count-special-triplets.py"
+    },
+    "leetcode:spiral-matrix-ii": {
+      "platform": "leetcode",
+      "slug": "spiral-matrix-ii",
+      "title": "Spiral Matrix II",
+      "difficulty": "Medium",
+      "syncedAt": "2026-08-20T17:28:24.719Z",
+      "commitSha": "ebb83473c3f4ed18354c0975947692779e38c361",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/ebb83473c3f4ed18354c0975947692779e38c361",
+      "filePath": "leetcode/medium/spiral-matrix-ii.py"
+    },
+    "leetcode:transpose-matrix": {
+      "platform": "leetcode",
+      "slug": "transpose-matrix",
+      "title": "Transpose Matrix",
+      "difficulty": "Easy",
+      "syncedAt": "2026-08-20T17:28:26.104Z",
+      "commitSha": "134d4cc1ff8df10cfb8df4fed21646345df7848a",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/134d4cc1ff8df10cfb8df4fed21646345df7848a",
+      "filePath": "leetcode/easy/transpose-matrix.py"
+    }
+  }
+}

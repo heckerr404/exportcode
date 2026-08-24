@@ -1,0 +1,32 @@
+# Secrets — NEVER commit these
+.env
+**/data/secrets.json
+
+# Node modules
+node_modules/
+*/node_modules/
+
+# Build output
+dist/
+build/
+*/dist/
+*/build/
+
+# SQLite database (contains your sync ledger)
+*.db
+*.sqlite
+
+# Logs
+*.log
+logs/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Vite / Parcel cache
+.cache/
+.vite/

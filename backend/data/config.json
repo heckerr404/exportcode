@@ -1,0 +1,11 @@
+{
+  "leetcodeUsername": "heckerr404",
+  "gfgUsername": "@ry668qp8r",
+  "githubUsername": "heckerr404",
+  "githubRepo": "CPP",
+  "language": "python",
+  "scheduleEnabled": true,
+  "scheduleCron": "0 23 * * *",
+  "commitMessageTemplate": "feat: solved {title} ({platform}, {difficulty})",
+  "folderStructure": "by-difficulty"
+}
