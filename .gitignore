@@ -30,3 +30,23 @@ Thumbs.db
 # Vite / Parcel cache
 .cache/
 .vite/
+
+# Test coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+
+# Package manager locks (keep only one)
+yarn.lock
+pnpm-lock.yaml
