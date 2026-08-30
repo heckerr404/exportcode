@@ -84,11 +84,15 @@ gfg/
 ## Phases
 
 - [x] Phase 0 — Scaffold
-- [ ] Phase 1 — LeetCode integration
-- [ ] Phase 2 — GFG integration
-- [ ] Phase 3 — Local ledger / diffing
-- [ ] Phase 4 — File generation
-- [ ] Phase 5 — Git commit automation
-- [ ] Phase 6 — Web dashboard
-- [ ] Phase 7 — Scheduling
+- [x] Phase 1 — LeetCode integration
+- [x] Phase 2 — GFG integration
+- [x] Phase 3 — Local ledger / diffing
+- [x] Phase 4 — File generation
+- [x] Phase 5 — Git commit automation
+- [x] Phase 6 — Web dashboard
+- [x] Phase 7 — Scheduling
 - [ ] Phase 8 — Polish & tests
+
+---
+
+> Last updated: August 2026
