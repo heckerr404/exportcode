@@ -1,10 +1,10 @@
 # CodeSync
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-codesync--puce--omega.vercel.app-black?style=for-the-badge&logo=vercel)](https://codesync-puce-omega.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-frontend--eight--virid.vercel.app-black?style=for-the-badge&logo=vercel)](https://frontend-eight-virid-ab5l50ahz2.vercel.app)
 
 > Automatically sync your LeetCode and GeeksforGeeks solved problems to GitHub — one commit per problem.
 
-🌐 **Live:** https://codesync-puce-omega.vercel.app
+🌐 **Live:** https://frontend-eight-virid-ab5l50ahz2.vercel.app
 
 ## Quick Start
 
@@ -101,4 +101,5 @@ gfg/
 
 > Last updated: September 2026 — See [CHANGELOG.md](./CHANGELOG.md) for version history.
 >
-> 🚀 Deployed on [Vercel](https://codesync-puce-omega.vercel.app)
+> 🚀 Deployed on [Vercel](https://frontend-eight-virid-ab5l50ahz2.vercel.app)
+
