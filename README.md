@@ -95,4 +95,4 @@ gfg/
 
 ---
 
-> Last updated: August 2026
+> Last updated: September 2026 — See [CHANGELOG.md](./CHANGELOG.md) for version history.
