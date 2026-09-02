@@ -4,7 +4,7 @@
 
 > Automatically sync your LeetCode and GeeksforGeeks solved problems to GitHub — one commit per problem.
 
-🌐 **Live:** https://frontend-eight-virid-ab5l50ahz2.vercel.app
+🌐 **Live Demo:** https://frontend-eight-virid-ab5l50ahz2.vercel.app
 
 ## Quick Start
 
