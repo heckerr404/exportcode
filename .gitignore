@@ -50,3 +50,4 @@ coverage/
 # Package manager locks (keep only one)
 yarn.lock
 pnpm-lock.yaml
+.vercel
