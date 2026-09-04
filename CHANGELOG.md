@@ -15,6 +15,15 @@ All notable changes to CodeSync are documented here.
 
 ---
 
+## [0.8.0] — 2026-09-04
+
+### Added
+- Local development fallback mode for authentication, configurations, secrets, and ledger
+- Graceful Firebase initialization when environment variables are omitted
+- Host listening configuration for frontend Vite development server
+
+---
+
 ## [0.7.0] — 2026-08-31
 
 ### Added

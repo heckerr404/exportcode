@@ -95,7 +95,8 @@ gfg/
 - [x] Phase 5 — Git commit automation
 - [x] Phase 6 — Web dashboard
 - [x] Phase 7 — Scheduling
-- [ ] Phase 8 — Polish & tests
+- [x] Phase 8 — Local offline dev fallback mode & resilience
+- [ ] Phase 9 — Tests & CI/CD
 
 ---
 
