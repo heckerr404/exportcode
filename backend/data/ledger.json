@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastSync": "2026-08-20T17:34:14.132Z",
+  "lastSync": "2026-09-02T09:04:43.407Z",
   "problems": {
     "leetcode:binary-tree-preorder-traversal": {
       "platform": "leetcode",
@@ -151,6 +151,26 @@
       "commitSha": "134d4cc1ff8df10cfb8df4fed21646345df7848a",
       "commitUrl": "https://github.com/heckerr404/CPP/commit/134d4cc1ff8df10cfb8df4fed21646345df7848a",
       "filePath": "leetcode/easy/transpose-matrix.py"
+    },
+    "leetcode:reverse-linked-list": {
+      "platform": "leetcode",
+      "slug": "reverse-linked-list",
+      "title": "Reverse Linked List",
+      "difficulty": "Easy",
+      "syncedAt": "2026-09-02T09:00:16.043Z",
+      "commitSha": "9ccb289131c12230b471f7bcaa3e49e8247356a3",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/9ccb289131c12230b471f7bcaa3e49e8247356a3",
+      "filePath": "leetcode/easy/reverse-linked-list.py"
+    },
+    "leetcode:middle-of-the-linked-list": {
+      "platform": "leetcode",
+      "slug": "middle-of-the-linked-list",
+      "title": "Middle of the Linked List",
+      "difficulty": "Easy",
+      "syncedAt": "2026-09-02T09:00:17.657Z",
+      "commitSha": "390182a2f37202dc3f9eed1947881a356ab0394b",
+      "commitUrl": "https://github.com/heckerr404/CPP/commit/390182a2f37202dc3f9eed1947881a356ab0394b",
+      "filePath": "leetcode/easy/middle-of-the-linked-list.py"
     }
   }
 }
