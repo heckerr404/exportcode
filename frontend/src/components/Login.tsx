@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { signInWithGoogle } from '../lib/firebase';
+import { signInWithGoogle, signInAsGuest } from '../lib/firebase';
 
 interface LoginProps {
   onLogin: () => void;
@@ -17,6 +17,17 @@ export function Login({ onLogin }: LoginProps) {
       onLogin();
     } catch (err: any) {
       setError(err?.message ?? 'Sign-in failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleGuestSignIn() {
+    setLoading(true);
+    setError(null);
+    try {
+      await signInAsGuest();
+      onLogin();
     } finally {
       setLoading(false);
     }
@@ -91,6 +102,16 @@ export function Login({ onLogin }: LoginProps) {
             </svg>
           )}
           {loading ? 'Signing in…' : 'Continue with Google'}
+        </button>
+
+        <button
+          id="btn-guest-signin"
+          type="button"
+          className="login-btn-secondary"
+          onClick={handleGuestSignIn}
+          disabled={loading}
+        >
+          ⚡ Continue as Guest (Demo Mode)
         </button>
 
         <p className="login-footer">

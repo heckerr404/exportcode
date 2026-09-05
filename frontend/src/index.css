@@ -130,6 +130,18 @@
   .login-btn:hover:not(:disabled) { background: rgba(255,255,255,0.92); }
   .login-btn:active:not(:disabled) { transform: scale(0.97); }
   .login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .login-btn-secondary {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    width: 100%; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85);
+    font-weight: 500; font-size: 0.8125rem;
+    padding: 0.6875rem 1.25rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer; transition: all 0.2s; outline: none; margin-top: 0.625rem;
+  }
+  .login-btn-secondary:hover:not(:disabled) {
+    background: rgba(255,255,255,0.12); color: white; border-color: rgba(255,255,255,0.25);
+  }
+  .login-btn-secondary:active:not(:disabled) { transform: scale(0.98); }
+  .login-btn-secondary:disabled { opacity: 0.6; cursor: not-allowed; }
   .login-btn-spinner {
     display: inline-block; width: 1rem; height: 1rem;
     border: 2px solid #9ca3af; border-top-color: #1f2937;

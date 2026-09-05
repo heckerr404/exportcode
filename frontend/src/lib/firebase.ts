@@ -9,17 +9,20 @@ import {
   type User,
 } from 'firebase/auth';
 
-const apiKey = (import.meta.env.VITE_FIREBASE_API_KEY || '').trim();
-const projectId = (import.meta.env.VITE_FIREBASE_PROJECT_ID || '').trim();
-const isConfigured = Boolean(
-  apiKey &&
-  !apiKey.startsWith('your-') &&
-  projectId &&
-  !projectId.startsWith('your-')
+const rawApiKey = (import.meta.env.VITE_FIREBASE_API_KEY || '').trim();
+const rawProjectId = (import.meta.env.VITE_FIREBASE_PROJECT_ID || '').trim();
+
+export const isFirebaseConfigured = Boolean(
+  rawApiKey &&
+  !rawApiKey.startsWith('your-') &&
+  !rawApiKey.includes('mock') &&
+  rawProjectId &&
+  !rawProjectId.startsWith('your-') &&
+  !rawProjectId.includes('mock')
 );
 
 const firebaseConfig = {
-  apiKey:            apiKey || 'mock-api-key',
+  apiKey:            rawApiKey || 'mock-api-key',
   authDomain:        import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'mock-project.firebaseapp.com',
   projectId:         import.meta.env.VITE_FIREBASE_PROJECT_ID || 'mock-project',
   storageBucket:     import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'mock-project.appspot.com',
@@ -30,7 +33,7 @@ const firebaseConfig = {
 let firebaseApp: FirebaseApp | null = null;
 let auth: Auth | null = null;
 
-if (isConfigured) {
+if (isFirebaseConfigured) {
   try {
     firebaseApp = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
     auth = getAuth(firebaseApp);
@@ -45,37 +48,77 @@ const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope('profile');
 googleProvider.addScope('email');
 
-// Mock user for local development
-const mockDevUser = {
+// Guest / Local demo user
+export const mockDevUser = {
   uid: 'local-user',
-  displayName: 'Local User',
-  email: 'local@codesync.dev',
+  displayName: 'Demo User',
+  email: 'user@codesync.dev',
   photoURL: null,
   getIdToken: async () => 'dev-token',
 } as unknown as User;
 
-let localDevUser: User | null = mockDevUser;
+const GUEST_STORAGE_KEY = 'codesync_guest_session';
+let localDevUser: User | null = typeof window !== 'undefined' && localStorage.getItem(GUEST_STORAGE_KEY) === 'true'
+  ? mockDevUser
+  : (!isFirebaseConfigured ? mockDevUser : null);
+
 const authSubscribers = new Set<(user: User | null) => void>();
 
-/** Sign in with Google popup. Returns the signed-in user. */
+function notifySubscribers(user: User | null) {
+  authSubscribers.forEach((cb) => {
+    try {
+      cb(user);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+}
+
+/** Sign in with Google popup. Falls back gracefully to Guest mode if API key or domain is invalid. */
 export async function signInWithGoogle(): Promise<User> {
   if (auth) {
-    const result = await signInWithPopup(auth, googleProvider);
-    return result.user;
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      if (typeof window !== 'undefined') localStorage.removeItem(GUEST_STORAGE_KEY);
+      return result.user;
+    } catch (err: any) {
+      console.warn('[Firebase Auth] Sign-in error:', err);
+      const isConfigError =
+        err?.code === 'auth/api-key-not-valid' ||
+        err?.code === 'auth/invalid-api-key' ||
+        err?.code === 'auth/project-not-found' ||
+        err?.code === 'auth/configuration-not-found' ||
+        err?.code === 'auth/unauthorized-domain' ||
+        err?.code === 'auth/operation-not-allowed';
+
+      if (isConfigError) {
+        console.info('[Firebase Auth] Invalid Firebase API key detected. Continuing with Guest session.');
+        return signInAsGuest();
+      }
+      throw err;
+    }
   }
+  return signInAsGuest();
+}
+
+/** Sign in as Guest / Local user. */
+export async function signInAsGuest(): Promise<User> {
   localDevUser = mockDevUser;
-  authSubscribers.forEach((cb) => cb(localDevUser));
+  if (typeof window !== 'undefined') localStorage.setItem(GUEST_STORAGE_KEY, 'true');
+  notifySubscribers(localDevUser);
   return mockDevUser;
 }
 
 /** Sign out the current user. */
 export async function signOut(): Promise<void> {
+  if (typeof window !== 'undefined') localStorage.removeItem(GUEST_STORAGE_KEY);
   if (auth) {
-    await firebaseSignOut(auth);
-    return;
+    try {
+      await firebaseSignOut(auth);
+    } catch {}
   }
   localDevUser = null;
-  authSubscribers.forEach((cb) => cb(null));
+  notifySubscribers(null);
 }
 
 /**
@@ -84,9 +127,13 @@ export async function signOut(): Promise<void> {
  */
 export async function getIdToken(): Promise<string | null> {
   if (auth?.currentUser) {
-    return auth.currentUser.getIdToken();
+    try {
+      return await auth.currentUser.getIdToken();
+    } catch {
+      return 'dev-token';
+    }
   }
-  if (!isConfigured && localDevUser) {
+  if (localDevUser) {
     return 'dev-token';
   }
   return null;
@@ -95,10 +142,17 @@ export async function getIdToken(): Promise<string | null> {
 /** Subscribe to auth state changes. Returns unsubscribe function. */
 export function onAuthChange(callback: (user: User | null) => void): () => void {
   if (auth) {
-    return onAuthStateChanged(auth, callback);
+    return onAuthStateChanged(auth, (user) => {
+      if (user) {
+        callback(user);
+      } else if (localDevUser) {
+        callback(localDevUser);
+      } else {
+        callback(null);
+      }
+    });
   }
   authSubscribers.add(callback);
-  // Asynchronously trigger with current local state
   setTimeout(() => callback(localDevUser), 0);
   return () => {
     authSubscribers.delete(callback);
