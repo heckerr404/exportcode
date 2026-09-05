@@ -37,7 +37,21 @@ app.use('/api/config', configRouter);
 app.use('/api/sync', syncRouter);
 
 app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  const memoryUsage = process.memoryUsage();
+  res.json({
+    status: 'ok',
+    service: 'codesync-backend',
+    version: '1.0.0',
+    uptimeSeconds: Math.floor(process.uptime()),
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development',
+    nodeVersion: process.version,
+    memory: {
+      rssMb: Math.round((memoryUsage.rss / 1024 / 1024) * 100) / 100,
+      heapUsedMb: Math.round((memoryUsage.heapUsed / 1024 / 1024) * 100) / 100,
+      heapTotalMb: Math.round((memoryUsage.heapTotal / 1024 / 1024) * 100) / 100,
+    },
+  });
 });
 
 // ─── 404 handler ─────────────────────────────────────────────────────────────
@@ -46,7 +60,7 @@ app.use((_req, res) => {
 });
 
 // ─── Local dev only ───────────────────────────────────────────────────────────
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test' && require.main === module) {
   const PORT = process.env.PORT || 3001;
   app.listen(PORT, async () => {
     console.log(`\n🚀 CodeSync backend → http://localhost:${PORT}\n`);
