@@ -96,7 +96,7 @@ gfg/
 - [x] Phase 6 — Web dashboard
 - [x] Phase 7 — Scheduling
 - [x] Phase 8 — Local offline dev fallback mode & resilience
-- [ ] Phase 9 — Tests & CI/CD
+- [x] Phase 9 — CI/CD workflow via GitHub Actions
 
 ---
 

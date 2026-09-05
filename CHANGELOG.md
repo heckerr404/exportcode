@@ -6,10 +6,12 @@ All notable changes to CodeSync are documented here.
 
 ## [Unreleased]
 
+### Added
+- GitHub Actions CI workflow for automated backend and frontend build and typecheck
+
 ### Planned
 - Unit tests for sync engine and GitHub client
 - End-to-end integration tests
-- CI/CD pipeline via GitHub Actions
 - Multi-language solution support (JavaScript, Java, C++)
 - Browser extension for one-click syncing
 
