@@ -1,7 +1,7 @@
 import { fetchLeetCodeSolved } from '../integrations/leetcode';
 import { fetchGFGSolved } from '../integrations/gfg';
 import { diffProblems, markSynced, touchLastSync } from '../ledger/ledger';
-import { buildFilePath, generatePythonFile } from '../generator/fileGen';
+import { buildFilePath, generateSolutionFile } from '../generator/fileGen';
 import { commitFile } from '../git/github';
 import { getConfig, getSecrets, getLedger, saveLedger } from '../config/manager';
 import type { SyncJob, SyncResult, CommitResult, Problem } from '../types/index';
@@ -119,7 +119,7 @@ export async function runSync(uid: string): Promise<SyncResult> {
     // ── Commit each new problem ───────────────────────────────────────────────
     for (const problem of newProblems) {
       const filePath = buildFilePath(problem, config);
-      const fileContent = generatePythonFile(problem);
+      const fileContent = generateSolutionFile(problem, config);
       const commitMessage = config.commitMessageTemplate
         .replace('{title}', problem.title)
         .replace('{platform}', problem.platform === 'leetcode' ? 'LeetCode' : 'GFG')

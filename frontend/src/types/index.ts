@@ -1,11 +1,13 @@
 export type Platform = 'leetcode' | 'gfg';
 
+export type SupportedLanguage = 'python' | 'cpp' | 'java' | 'javascript' | 'typescript';
+
 export interface AppConfig {
   leetcodeUsername: string;
   gfgUsername: string;
   githubUsername: string;
   githubRepo: string;
-  language: 'python';
+  language: SupportedLanguage;
   scheduleEnabled: boolean;
   scheduleCron: string;
   commitMessageTemplate: string;

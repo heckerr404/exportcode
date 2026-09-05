@@ -30,12 +30,14 @@ export interface Ledger {
   problems: Record<string, LedgerEntry>; // key: `${platform}:${slug}`
 }
 
+export type SupportedLanguage = 'python' | 'cpp' | 'java' | 'javascript' | 'typescript';
+
 export interface AppConfig {
   leetcodeUsername: string;
   gfgUsername: string;
   githubUsername: string;
   githubRepo: string;
-  language: 'python';
+  language: SupportedLanguage;
   scheduleEnabled: boolean;
   scheduleCron: string;
   commitMessageTemplate: string;

@@ -539,6 +539,7 @@ function SettingsPage({ config, onSaved }: SettingsProps) {
         gfgUsername: config.gfgUsername,
         githubUsername: config.githubUsername,
         githubRepo: config.githubRepo,
+        language: config.language || 'python',
         scheduleEnabled: config.scheduleEnabled,
         scheduleCron: config.scheduleCron,
         commitMessageTemplate: config.commitMessageTemplate,
@@ -681,6 +682,16 @@ function SettingsPage({ config, onSaved }: SettingsProps) {
         {/* Sync options */}
         <Section title="Sync Options" icon="⚙️">
           <div className="grid sm:grid-cols-2 gap-4">
+            <Field label="Solution Language">
+              <select id="solution-language" className="input-field"
+                value={form.language} onChange={e => set('language', e.target.value)}>
+                <option value="python">Python (.py)</option>
+                <option value="cpp">C++ (.cpp)</option>
+                <option value="java">Java (.java)</option>
+                <option value="javascript">JavaScript (.js)</option>
+                <option value="typescript">TypeScript (.ts)</option>
+              </select>
+            </Field>
             <Field label="Folder Structure">
               <select id="folder-structure" className="input-field"
                 value={form.folderStructure} onChange={e => set('folderStructure', e.target.value)}>
@@ -688,11 +699,13 @@ function SettingsPage({ config, onSaved }: SettingsProps) {
                 <option value="flat">Flat (leetcode/…)</option>
               </select>
             </Field>
-            <Field label="Commit Message Template">
-              <input id="commit-template" className="input-field font-mono text-xs"
-                value={form.commitMessageTemplate}
-                onChange={e => set('commitMessageTemplate', e.target.value)} />
-            </Field>
+            <div className="sm:col-span-2">
+              <Field label="Commit Message Template">
+                <input id="commit-template" className="input-field font-mono text-xs"
+                  value={form.commitMessageTemplate}
+                  onChange={e => set('commitMessageTemplate', e.target.value)} />
+              </Field>
+            </div>
           </div>
         </Section>
 
