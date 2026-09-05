@@ -3,6 +3,8 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   signOut as firebaseSignOut,
   onAuthStateChanged,
   type Auth,
@@ -37,6 +39,10 @@ if (isFirebaseConfigured) {
   try {
     firebaseApp = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
     auth = getAuth(firebaseApp);
+    // Check if user is returning from a redirect sign-in
+    getRedirectResult(auth).catch((err) => {
+      console.warn('[Firebase Auth] Redirect result error:', err);
+    });
   } catch (err) {
     console.warn('[Firebase] Initialization failed, falling back to local mode:', err);
   }
@@ -47,6 +53,7 @@ export { auth };
 const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope('profile');
 googleProvider.addScope('email');
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 
 // Guest / Local demo user
 export const mockDevUser = {
@@ -74,7 +81,7 @@ function notifySubscribers(user: User | null) {
   });
 }
 
-/** Sign in with Google popup. Falls back gracefully to Guest mode if API key or domain is invalid. */
+/** Sign in with Google popup (with redirect fallback for blocked popups). */
 export async function signInWithGoogle(): Promise<User> {
   if (auth) {
     try {
@@ -83,6 +90,17 @@ export async function signInWithGoogle(): Promise<User> {
       return result.user;
     } catch (err: any) {
       console.warn('[Firebase Auth] Sign-in error:', err);
+
+      if (err?.code === 'auth/popup-blocked') {
+        // Fallback to full page redirect if browser blocks popups
+        await signInWithRedirect(auth, googleProvider);
+        return mockDevUser;
+      }
+
+      if (err?.code === 'auth/popup-closed-by-user') {
+        throw new Error('Sign-in cancelled. Please try again.');
+      }
+
       const isConfigError =
         err?.code === 'auth/api-key-not-valid' ||
         err?.code === 'auth/invalid-api-key' ||
@@ -92,7 +110,7 @@ export async function signInWithGoogle(): Promise<User> {
         err?.code === 'auth/operation-not-allowed';
 
       if (isConfigError) {
-        console.info('[Firebase Auth] Invalid Firebase API key detected. Continuing with Guest session.');
+        console.info('[Firebase Auth] Fallback to guest mode due to config status.');
         return signInAsGuest();
       }
       throw err;
