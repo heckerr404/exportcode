@@ -35,20 +35,15 @@ export function Login({ onLogin }: LoginProps) {
 
   return (
     <div className="login-page">
-      {/* Background blobs */}
+      {/* Ambient pastel background blobs */}
       <div className="login-blob login-blob-1" />
       <div className="login-blob login-blob-2" />
       <div className="login-blob login-blob-3" />
 
       <div className="login-card">
-        {/* Logo */}
-        <div className="login-logo">
-          <div className="login-logo-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <path strokeLinecap="round" strokeLinejoin="round"
-                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
-          </div>
+        {/* Sense 3D Sunset Orb */}
+        <div className="login-logo flex flex-col items-center">
+          <div className="sense-orb-lg mb-3 shadow-orb animate-float" />
         </div>
 
         {/* Heading */}
@@ -57,7 +52,7 @@ export function Login({ onLogin }: LoginProps) {
           Auto-sync your LeetCode &amp; GFG solutions<br />to GitHub — one commit per problem.
         </p>
 
-        {/* Features */}
+        {/* Features list */}
         <ul className="login-features">
           {[
             { icon: '⚡', text: 'Instant sync on demand' },
@@ -72,7 +67,7 @@ export function Login({ onLogin }: LoginProps) {
           ))}
         </ul>
 
-        {/* Error */}
+        {/* Error notice */}
         {error && (
           <div className="login-error">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -84,7 +79,7 @@ export function Login({ onLogin }: LoginProps) {
           </div>
         )}
 
-        {/* Sign in button */}
+        {/* Google Sign-in button */}
         <button
           id="btn-google-signin"
           className="login-btn"
@@ -104,6 +99,7 @@ export function Login({ onLogin }: LoginProps) {
           {loading ? 'Signing in…' : 'Continue with Google'}
         </button>
 
+        {/* Guest Demo button */}
         <button
           id="btn-guest-signin"
           type="button"
