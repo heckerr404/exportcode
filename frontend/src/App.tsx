@@ -432,17 +432,22 @@ function DashboardPage({ config, syncJob, history, totalSynced, lcCount, gfgCoun
 }
 
 function StatCard({ label, value, color, icon, isText }: { label: string; value: number | string; color: string; icon: string; isText?: boolean }) {
-  const colorMap: Record<string, string> = {
-    brand: 'from-brand-500/20 to-brand-600/10 border-brand-500/20',
-    amber: 'from-amber-500/20 to-amber-600/10 border-amber-500/20',
-    green: 'from-emerald-500/20 to-emerald-600/10 border-emerald-500/20',
-    violet: 'from-violet-500/20 to-violet-600/10 border-violet-500/20',
+  const colorMap: Record<string, { bg: string; iconBg: string; text: string }> = {
+    brand: { bg: 'from-brand-500/15 via-brand-600/5 to-transparent border-brand-500/30', iconBg: 'bg-brand-500/20 text-brand-300', text: 'text-white' },
+    amber: { bg: 'from-amber-500/15 via-amber-600/5 to-transparent border-amber-500/30', iconBg: 'bg-amber-500/20 text-amber-300', text: 'text-white' },
+    green: { bg: 'from-emerald-500/15 via-emerald-600/5 to-transparent border-emerald-500/30', iconBg: 'bg-emerald-500/20 text-emerald-300', text: 'text-white' },
+    violet: { bg: 'from-violet-500/15 via-violet-600/5 to-transparent border-violet-500/30', iconBg: 'bg-violet-500/20 text-violet-300', text: 'text-white' },
   };
+  const theme = colorMap[color] ?? colorMap.brand;
   return (
-    <div className={`glass-card bg-gradient-to-br ${colorMap[color] ?? ''} p-4`}>
-      <div className="text-lg mb-1">{icon}</div>
-      <div className={`font-bold text-white ${isText ? 'text-base' : 'text-2xl'}`}>{value}</div>
-      <div className="text-xs text-white/40 mt-0.5">{label}</div>
+    <div className={`glass-card bg-gradient-to-br ${theme.bg} p-5 flex flex-col justify-between group hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300`}>
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-xs font-semibold text-white/50 uppercase tracking-wider">{label}</span>
+        <div className={`w-8 h-8 rounded-lg ${theme.iconBg} flex items-center justify-center text-sm shadow-sm transition-transform group-hover:scale-110`}>
+          {icon}
+        </div>
+      </div>
+      <div className={`font-extrabold ${theme.text} tracking-tight ${isText ? 'text-lg' : 'text-3xl'}`}>{value}</div>
     </div>
   );
 }
@@ -754,10 +759,15 @@ function SettingsPage({ config, onSaved }: SettingsProps) {
 
 function Section({ title, icon, children }: { title: string; icon: string; children: React.ReactNode }) {
   return (
-    <div className="glass-card p-5">
-      <h2 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4 flex items-center gap-2">
-        <span>{icon}</span>{title}
-      </h2>
+    <div className="glass-card p-6 relative overflow-hidden">
+      <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-white/[0.06]">
+        <span className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-sm shadow-sm">
+          {icon}
+        </span>
+        <h2 className="text-sm font-bold text-white tracking-wide">
+          {title}
+        </h2>
+      </div>
       {children}
     </div>
   );
