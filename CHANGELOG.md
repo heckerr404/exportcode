@@ -6,14 +6,21 @@ All notable changes to CodeSync are documented here.
 
 ## [Unreleased]
 
-### Added
-- GitHub Actions CI workflow for automated backend and frontend build and typecheck
-
 ### Planned
-- Unit tests for sync engine and GitHub client
 - End-to-end integration tests
-- Multi-language solution support (JavaScript, Java, C++)
 - Browser extension for one-click syncing
+- Support for additional competitive programming platforms (Codeforces, HackerRank)
+
+---
+
+## [0.9.0] — 2026-09-05
+
+### Added
+- Multi-language solution template generation (Python, C++, Java, JavaScript, TypeScript)
+- Language selector in web dashboard Settings UI
+- Comprehensive unit test suite with native Node.js test runner for file generator and ledger diff logic
+- Enhanced system health & runtime diagnostic endpoint (`GET /api/health`)
+- GitHub Actions CI pipeline with automated build, typecheck, and test validation
 
 ---
 

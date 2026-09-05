@@ -1,5 +1,6 @@
 # CodeSync
 
+[![CI](https://github.com/heckerr404/exportcode/actions/workflows/ci.yml/badge.svg)](https://github.com/heckerr404/exportcode/actions)
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-frontend--eight--virid.vercel.app-black?style=for-the-badge&logo=vercel)](https://frontend-eight-virid-ab5l50ahz2.vercel.app)
 
 > Automatically sync your LeetCode and GeeksforGeeks solved problems to GitHub — one commit per problem.
@@ -58,14 +59,21 @@ Then open http://localhost:5173
 
 Non-secret settings are stored in `backend/config.json` (auto-created on first run):
 
-| Key | Description |
-|-----|-------------|
-| `leetcodeUsername` | Your LeetCode username |
-| `gfgUsername` | Your GeeksforGeeks username |
-| `githubRepo` | Target repo name (e.g. `my-solutions`) |
-| `language` | Solution file language (`python`) |
-| `scheduleEnabled` | Enable nightly auto-sync |
-| `scheduleCron` | Cron expression (default: `0 23 * * *`) |
+| Key | Description | Options |
+|-----|-------------|---------|
+| `leetcodeUsername` | Your LeetCode username | string |
+| `gfgUsername` | Your GeeksforGeeks username | string |
+| `githubRepo` | Target repo name (e.g. `my-solutions`) | string |
+| `language` | Solution file language | `python`, `cpp`, `java`, `javascript`, `typescript` |
+| `folderStructure` | Organization style | `by-difficulty`, `flat` |
+| `scheduleEnabled` | Enable nightly auto-sync | `true`, `false` |
+| `scheduleCron` | Cron expression | default: `0 23 * * *` |
+
+---
+
+## Health & Diagnostics Endpoint
+
+- `GET /api/health` — Returns runtime diagnostic metadata including service status, uptime, node version, and memory allocation.
 
 ---
 
@@ -85,7 +93,7 @@ gfg/
 
 ---
 
-## Phases
+## Phases & Roadmap
 
 - [x] Phase 0 — Scaffold
 - [x] Phase 1 — LeetCode integration
@@ -97,6 +105,7 @@ gfg/
 - [x] Phase 7 — Scheduling
 - [x] Phase 8 — Local offline dev fallback mode & resilience
 - [x] Phase 9 — CI/CD workflow via GitHub Actions
+- [x] Phase 10 — Multi-language solution templates & unit testing suite
 
 ---
 
